@@ -1,0 +1,22 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+
+  background-color: #9c6754;
+  padding: 5px;
+  font-size: 16pt;
+}
+
+.navbar svg {
+  cursor: pointer;
+}
+
+.icon {
+    display: block;
+}
+
+.iconNone{
+    display: none;
+}

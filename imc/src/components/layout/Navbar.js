@@ -1,21 +1,28 @@
 import "./MobileMenu";
+import "./NavbarStyle.css";
 
 import { AiOutlineMenu } from "react-icons/ai";
-import React from "react";
-import styled from "styled-components";
-
-import { MenuMobile, Name, NavBar, PlaceLogin } from './NavbarStyle'
-
+import React, { useState } from "react";
+import MobileMenu from "./MobileMenu";
 
 function Navbar() {
+  const [active, setActive] = useState(false);
+
+  const ToggleMode = () => {
+    setActive(!active);
+  };
+
   return (
-    <NavBar>
-      <MenuMobile>
-        <AiOutlineMenu />
-      </MenuMobile>
-      <Name>Name</Name>
-      <PlaceLogin>Login</PlaceLogin>
-    </NavBar>
+    <>
+      <nav className="navbar">
+        <div className={active ? "icon" : ".iconNone"} onClick={ToggleMode}>
+          <AiOutlineMenu />
+        </div>
+        <div className="name">1</div>
+        <div className="placeLogin">2</div>
+      </nav>
+      <MobileMenu customClass={active ? "showMenu" : "hiddenMenu"} />
+    </>
   );
 }
 

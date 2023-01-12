@@ -6,7 +6,7 @@ function Home() {
 
   return (
     <>
-      <MobileMenu />
+      <h1>olá</h1>
     </>
   );
 }

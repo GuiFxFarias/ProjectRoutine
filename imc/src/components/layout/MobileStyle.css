@@ -19,4 +19,10 @@
   display: none;
 }
 
+.showMenu{
+  display: block;
+}
 
+.hiddenMenu{
+  display: none;
+}
