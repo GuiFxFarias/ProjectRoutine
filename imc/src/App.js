@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./components/layout/MobileStyle.css";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import Theme from "./components/layout/Themes";
+
+import Navbar from "./components/layout/Navbar";
+import Home from "./components/pages/Home";
+
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+const GlobalStyle = createGlobalStyle`
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={Theme}>
+      <GlobalStyle />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 

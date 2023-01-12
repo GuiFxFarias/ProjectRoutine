@@ -1,0 +1,22 @@
+.categories {
+  width: 200px;
+  height: 100%;
+  background-color: #fac8b6;
+  color: black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.categoriesItem {
+  margin-bottom: 20px;
+  padding-top: 20px;
+}
+
+.display {
+  display: none;
+}
+
+
