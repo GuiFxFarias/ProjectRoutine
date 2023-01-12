@@ -14,9 +14,17 @@
 }
 
 .icon {
-    display: block;
+  display: block;
 }
 
-.iconNone{
-    display: none;
+.iconNone {
+  display: none;
+}
+
+.showMenu {
+  display: block;
+}
+
+.hiddenMenu {
+  display: none;
 }

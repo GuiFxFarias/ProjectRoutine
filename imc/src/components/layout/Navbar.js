@@ -10,6 +10,7 @@ function Navbar() {
 
   const ToggleMode = () => {
     setActive(!active);
+    console.log(active);
   };
 
   return (
