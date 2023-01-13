@@ -1,0 +1,15 @@
+.listInputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 30vh;
+  border: none;
+}
+
+.addTask {
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+}

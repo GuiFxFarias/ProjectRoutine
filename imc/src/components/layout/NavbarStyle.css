@@ -1,10 +1,20 @@
+:root {
+  --light: #fcfffe;
+  --lightMed: #e3e6e4;
+  --Medium: #bdbfbe;
+  --MedDark: #7e807f;
+  --Dark: #3f403f;
+  --Red: #ff4e4e;
+}
+
 .navbar {
   display: flex;
   align-items: center;
-  width: 100%;
   justify-content: space-around;
+  overflow-x: hidden;
 
-  background-color: #9c6754;
+  color: var(--Dark);
+  background-color: #e3e6e4;
   padding: 5px;
   font-size: 16pt;
 }
@@ -22,7 +32,7 @@
 }
 
 .showMenu {
-  display: block;
+  display: flex;
 }
 
 .hiddenMenu {

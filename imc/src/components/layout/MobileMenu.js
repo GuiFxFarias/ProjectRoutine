@@ -1,13 +1,19 @@
+import { Link } from "react-router-dom";
 import "./MobileStyle.css";
 
-function MobileMenu({ customClass }) {
+function MobileMenu() {
   return (
-    <div className={`categories ${customClass}`}>
-      <div className="categoriesItem">Adicionar Agenda</div>
-      <div className="categoriesItem">Ver Agendas</div>
-      <div className="categoriesItem">Dicas</div>
-      <div className="categoriesItem">Configurações</div>
-    </div>
+    <ul className={`categories`}>
+      <li className="categoriesItem">
+        <Link to={"/AddRoutine"}>Adicionar Rotina</Link>
+      </li>
+      <li className="categoriesItem">Ver Agendas</li>
+      <li className="categoriesItem">
+        <Link to={"/"}>Home</Link>
+      </li>
+      <li className="categoriesItem">Dicas</li>
+      <li className="categoriesItem">Configurações</li>
+    </ul>
   );
 }
 

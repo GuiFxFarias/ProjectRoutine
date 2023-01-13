@@ -3,16 +3,19 @@ import Navbar from "./components/layout/Navbar";
 import Home from "./components/pages/Home";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import MobileMenu from "./components/layout/MobileMenu";
+import Main from "./components/layout/Main";
+import AddRoutine from "./components/pages/AddRoutine";
 
 function App() {
-  
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-      </Routes>
+      <Main>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/AddRoutine" element={<AddRoutine />}></Route>
+        </Routes>
+      </Main>
     </Router>
   );
 }

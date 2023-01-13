@@ -1,5 +1,14 @@
-*{
+
+* {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+}
+
+:root {
+  --light: #FCFFFE,
+  --lightMed: #E3E6E4,
+  --Medium: #BDBFBE,
+  --MedDark: #7E807F,
+  --Dark: #3F403F,
 }

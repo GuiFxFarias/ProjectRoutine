@@ -1,0 +1,75 @@
+:root {
+  --light: #fcfffe;
+  --lightMed: #e3e6e4;
+  --Medium: #bdbfbe;
+  --MedDark: #7e807f;
+  --Dark: #3f403f;
+  --Red: #ff4e4e;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  overflow-x: hidden;
+  margin-bottom: 2.4em;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+h1 strong {
+  border-radius: 5px;
+  margin: 0px 10px;
+  padding: 0px 5px;
+  background-color: var(--Red);
+  color: var(--light);
+}
+.text {
+  margin: auto;
+  width: 100%;
+  max-width: 500px;
+}
+
+.text p {
+  font-size: 16pt;
+  background-color: var(--Medium);
+  padding: 5px;
+  border-radius: 5px;
+  text-indent: 1em;
+  text-align: center;
+}
+
+.button {
+  text-align: center;
+}
+
+.addRoutine {
+  padding: 10px;
+  margin: auto;
+  border: none;
+  font-size: 18pt;
+  margin: 21px auto;
+
+  background-color: var(--Red);
+  color: var(--light);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.7s;
+}
+
+.addRoutine:hover {
+  background-color: var(--Dark);
+  box-shadow: 0px 0px 10px var(--Red);
+}
+
+.footerDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5vh;
+    
+    margin: auto;
+    background-color: var(--Medium);
+}
