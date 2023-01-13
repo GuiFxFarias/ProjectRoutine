@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./RelogioStyle.css";
 
 function FDate() {
-  const [hour, setHour] = useState();
+  const [hour, setHour] = useState("-");
   const [minute, setMinute] = useState();
   const [seconds, setSeconds] = useState();
 
@@ -21,7 +21,7 @@ function FDate() {
   return (
     <>
       <h1 className="watch">
-        <ul className="listDate">
+        <ul className="listDate" >
           <li className="date">{hour}</li>
           <li className="date">{minute > 9 ? minute : `0${minute}`}</li>
           <li className="date ">{seconds > 9 ? seconds : `0${seconds}`}</li>

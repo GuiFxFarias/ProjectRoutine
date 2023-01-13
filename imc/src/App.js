@@ -1,6 +1,7 @@
 import "./components/layout/MobileStyle.css";
 import Navbar from "./components/layout/Navbar";
 import Home from "./components/pages/Home";
+import './App.css'
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Main from "./components/layout/Main";

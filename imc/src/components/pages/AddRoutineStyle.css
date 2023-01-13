@@ -1,3 +1,12 @@
+:root {
+  --light: #fcfffe;
+  --lightMed: #e3e6e4;
+  --Medium: #bdbfbe;
+  --MedDark: #7e807f;
+  --Dark: #3f403f;
+  --Red: #ff4e4e;
+}
+
 .listInputs {
   display: flex;
   flex-direction: column;
@@ -12,4 +21,30 @@
   margin-top: 10px;
   padding: 10px;
   border: none;
+  background-color: var(--Red);
+  color: var(--light);
+  font-size: 12pt;
+
+  cursor: pointer;
+  transition: .7s;
+}
+
+.addTask:hover {
+  background-color: var(--Dark);
+  box-shadow: 0px 0px 10px var(--Red);
+}
+
+label {
+  background-color: var(--Medium);
+  padding: 5px;
+  margin: 10px 0px;
+  width: 40%;
+  text-align: center;
+  border-radius: 5px;
+}
+input {
+  padding: 10px;
+  border-radius: 5px;
+  width: 38.5%;
+  border: 1px solid var(--MedDark);
 }
