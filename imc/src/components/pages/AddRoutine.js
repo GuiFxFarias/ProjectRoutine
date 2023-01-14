@@ -1,11 +1,21 @@
+import { useState } from "react";
 import "./AddRoutineStyle.css";
 
 function AddRoutine() {
+  const [task, setTask] = useState();
 
-  function addTask(e){
-    e.preventDefault()
+  const taskObj = [
+    {
+      id: Number,
+      name: String,
+      hour: Number,
+    },
+  ];
 
-    console.log('click')
+  function addTask(e) {
+    e.preventDefault();
+
+    taskObj.push()
   }
 
   return (
@@ -16,8 +26,14 @@ function AddRoutine() {
           <label htmlFor="taskHour">Informe a hora de sua tarefa</label>
           <input type="number" id="taskHour" />
           <label htmlFor="taskName">Informe sua tarefa</label>
-          <input type="text" id="taskName" />
-          <button className="addTask" onClick={addTask}>Adicionar</button>
+          <input
+            type="text"
+            id="taskName"
+            onChange={(e) => setTask(e.target.value)}
+          />
+          <button className="addTask" onClick={addTask}>
+            Adicionar
+          </button>
         </fieldset>
       </form>
     </>

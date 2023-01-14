@@ -3,8 +3,8 @@ import "./RelogioStyle.css";
 
 function FDate() {
   const [hour, setHour] = useState("-");
-  const [minute, setMinute] = useState();
-  const [seconds, setSeconds] = useState();
+  const [minute, setMinute] = useState("-");
+  const [seconds, setSeconds] = useState("-");
 
   useEffect(() => {
     setInterval(() => {

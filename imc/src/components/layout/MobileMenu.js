@@ -7,7 +7,6 @@ function MobileMenu() {
       <li className="categoriesItem">
         <Link to={"/AddRoutine"}>Adicionar Rotina</Link>
       </li>
-      <li className="categoriesItem">Ver Agendas</li>
       <li className="categoriesItem">
         <Link to={"/"}>Home</Link>
       </li>
