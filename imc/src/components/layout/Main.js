@@ -1,9 +1,5 @@
-function Main (props) {
-    return (
-        <>
-        {props.children}
-        </>
-    )
+function Main(props) {
+  return <>{props.children}</>;
 }
 
-export default Main
+export default Main;
