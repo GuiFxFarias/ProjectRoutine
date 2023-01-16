@@ -1,7 +1,10 @@
-function ItemRoutine({ name }) {
+function ItemRoutine({ lista }) {
   return (
     <>
-      <h1> name = {name} </h1>
+      <h1>Tarefa</h1>
+      {lista.map((item, index) => (
+        <p key={index}>{item}</p>
+      ))}
     </>
   );
 }

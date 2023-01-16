@@ -1,11 +1,9 @@
-import { useState } from "react";
 import ItemRoutine from "../layout/ItemRoutine";
 import "./AddRoutineStyle.css";
 
 function AddRoutine(props) {
   const tasks = [];
   let valorE = "";
-  let i = 0;
 
   function handleName(e) {
     valorE = e.target.value;
@@ -14,12 +12,11 @@ function AddRoutine(props) {
   function handleClick(e) {
     e.preventDefault();
 
-    if (valorE == "") {
+    if (valorE === "") {
       alert("Escreva algo");
     } else {
       tasks.push(valorE);
       console.log(tasks);
-      i++;
     }
   }
 
@@ -37,7 +34,7 @@ function AddRoutine(props) {
           </button>
         </fieldset>
       </form>
-    
+      <ItemRoutine lista={tasks} />
     </>
   );
 }
