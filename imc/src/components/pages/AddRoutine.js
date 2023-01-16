@@ -1,24 +1,20 @@
+import { useState } from "react";
 import ItemRoutine from "../layout/ItemRoutine";
 import "./AddRoutineStyle.css";
 
 function AddRoutine(props) {
-  const tasks = [];
-  let valorE = "";
+  const [task, setTask] = useState([]);
 
-  function handleName(e) {
-    valorE = e.target.value;
+  function handleName(e){
+    setTask(e.target.value)
   }
 
-  function handleClick(e) {
+  function handleTask(e) {
     e.preventDefault();
-
-    if (valorE === "") {
-      alert("Escreva algo");
-    } else {
-      tasks.push(valorE);
-      console.log(tasks);
-    }
+    console.log([task])
   }
+
+  
 
   return (
     <>
@@ -28,13 +24,11 @@ function AddRoutine(props) {
           <label htmlFor="taskHour">Informe a hora de sua tarefa</label>
           <input type="number" id="taskHour" />
           <label htmlFor="taskName">Informe sua tarefa</label>
-          <input type="text" id="taskName" onChange={handleName} />
-          <button className="addTask" onClick={handleClick}>
-            Adicionar
-          </button>
+          <input type="text" id="taskName" onChange={handleName}/>
+          <button className="addTask" onClick={handleTask}>Adicionar</button>
         </fieldset>
       </form>
-      <ItemRoutine lista={tasks} />
+      <ItemRoutine lista={task}/>
     </>
   );
 }
