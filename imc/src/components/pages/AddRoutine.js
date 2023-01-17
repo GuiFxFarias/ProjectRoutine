@@ -16,6 +16,7 @@ function AddRoutine() {
     } else {
       e.preventDefault();
       setName("");
+      setTime("")
       setArtists([
         ...artists,
         {
