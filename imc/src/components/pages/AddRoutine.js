@@ -3,22 +3,28 @@ import "./AddRoutineStyle.css";
 import { BiTrash } from "react-icons/bi";
 
 let nextId = 0;
-let nextIdH = 0;
 
-function AddRoutine(props) {
+function AddRoutine() {
   const [name, setName] = useState();
+  const [time, setTime] = useState();
   const [artists, setArtists] = useState([]);
 
   function handleTask(e) {
-    e.preventDefault();
-    setName("");
-    setArtists([
-      ...artists,
-      {
-        id: nextId++,
-        name: name,
-      },
-    ]);
+    if (name === "") {
+      e.preventDefault()
+      alert("Digite algo");
+    } else {
+      e.preventDefault();
+      setName("");
+      setArtists([
+        ...artists,
+        {
+          id: nextId++,
+          time: time,
+          name: name,
+        },
+      ]);
+    }
   }
 
   // function handleFilter(e) {
@@ -34,7 +40,12 @@ function AddRoutine(props) {
       <form>
         <fieldset className="listInputs">
           <label htmlFor="taskHour">Informe a hora de sua tarefa</label>
-          <input type="number" id="taskHour" />
+          <input
+            type="number"
+            id="taskHour"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+          />
           <label htmlFor="taskName">Informe sua tarefa</label>
           <input
             type="text"
@@ -49,16 +60,19 @@ function AddRoutine(props) {
       </form>
       <ul className="listTodo">
         {artists.map((artist) => (
-          <li key={artist.id} className="itemTodo">
-            {artist.name}{" "}
-            <button
-              onClick={() => {
-                setArtists(artists.filter((a) => a.id !== artist.id));
-              }}
-            >
-              <BiTrash />
-            </button>
-          </li>
+          <div className="divTodo">
+            <li className="timeTodo">{artist.time}h:</li>
+            <li key={artist.id} className="itemTodo">
+              {artist.name}{" "}
+              <button
+                onClick={() => {
+                  setArtists(artists.filter((a) => a.id !== artist.id));
+                }}
+              >
+                <BiTrash />
+              </button>
+            </li>
+          </div>
         ))}
       </ul>
     </>
@@ -66,9 +80,3 @@ function AddRoutine(props) {
 }
 
 export default AddRoutine;
-
-{
-  /* {artists.map((item) => (
-  <div key={item.id}>{item.name}</div>
-))} */
-}

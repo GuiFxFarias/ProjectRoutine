@@ -49,6 +49,16 @@ input {
   border: 1px solid var(--MedDark);
 }
 
+.divTodo{
+  display: flex;
+  align-items: center;
+}
+
+.timeTodo{
+  background-color: var(--lightMed);
+  padding: .6em;
+}
+
 .listTodo {
   display: flex;
   list-style: none;
@@ -67,7 +77,7 @@ input {
   max-width: 500px;
   background-color: var(--light);
   padding: 5px;
-  margin: .5em;
+  margin: .5em .5em .5em 0em;
 
   display: flex;
   justify-content: center;
