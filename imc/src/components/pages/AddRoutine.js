@@ -1,20 +1,32 @@
 import { useState } from "react";
-import ItemRoutine from "../layout/ItemRoutine";
 import "./AddRoutineStyle.css";
+import { BiTrash } from "react-icons/bi";
+
+let nextId = 0;
+let nextIdH = 0;
 
 function AddRoutine(props) {
-  const [task, setTask] = useState([]);
-
-  function handleName(e){
-    setTask(e.target.value)
-  }
+  const [name, setName] = useState();
+  const [artists, setArtists] = useState([]);
 
   function handleTask(e) {
     e.preventDefault();
-    console.log([task])
+    setName("");
+    setArtists([
+      ...artists,
+      {
+        id: nextId++,
+        name: name,
+      },
+    ]);
   }
 
-  
+  // function handleFilter(e) {
+  //   e.preventDefault();
+  //   artists.map((artist) => {
+  //     setArtists(artists.filter((a) => a.id !== artist.id));
+  //   });
+  // }
 
   return (
     <>
@@ -24,13 +36,39 @@ function AddRoutine(props) {
           <label htmlFor="taskHour">Informe a hora de sua tarefa</label>
           <input type="number" id="taskHour" />
           <label htmlFor="taskName">Informe sua tarefa</label>
-          <input type="text" id="taskName" onChange={handleName}/>
-          <button className="addTask" onClick={handleTask}>Adicionar</button>
+          <input
+            type="text"
+            id="taskName"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <button className="addTask" onClick={handleTask}>
+            Adicionar
+          </button>
         </fieldset>
       </form>
-      <ItemRoutine lista={task}/>
+      <ul className="listTodo">
+        {artists.map((artist) => (
+          <li key={artist.id} className="itemTodo">
+            {artist.name}{" "}
+            <button
+              onClick={() => {
+                setArtists(artists.filter((a) => a.id !== artist.id));
+              }}
+            >
+              <BiTrash />
+            </button>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
 
 export default AddRoutine;
+
+{
+  /* {artists.map((item) => (
+  <div key={item.id}>{item.name}</div>
+))} */
+}
