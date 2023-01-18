@@ -6,26 +6,29 @@ let nextId = 0;
 
 function AddRoutine() {
   const [name, setName] = useState();
-  const [time, setTime] = useState();
-  const [artists, setArtists] = useState([]);
+  const [timeH, setTimeH] = useState();
+  const [task, setTask] = useState([]);
 
   function handleTask(e) {
-    if (name === "" || time === "") {
-      e.preventDefault()
+    if (timeH === "" || name === "") {
+      e.preventDefault();
       alert("Digite algo");
+    } else if (timeH >= 24 || timeH < 0) {
+      alert("Coloque um horário correto");
+      e.preventDefault();
+      setTimeH("");
     } else {
       e.preventDefault();
-      setName("");
-      setTime("")
-      setArtists([
-        ...artists,
+      setTask([
+        ...task,
         {
           id: nextId++,
-          time: time,
+          time: timeH,
           name: name,
         },
       ]);
-      console.log(time.time)
+      setName("");
+      setTimeH("");
     }
   }
 
@@ -45,8 +48,8 @@ function AddRoutine() {
           <input
             type="number"
             id="taskHour"
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
+            value={timeH}
+            onChange={(e) => setTimeH(e.target.value)}
           />
           <label htmlFor="taskName">Informe sua tarefa</label>
           <input
@@ -55,20 +58,22 @@ function AddRoutine() {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <button className="addTask" onClick={handleTask} onClickCapture>
+          <button className="addTask" onClick={handleTask}>
             Adicionar
           </button>
         </fieldset>
       </form>
       <ul className="listTodo">
-        {artists.map((artist) => (
+        {task.map((artist) => (
           <div className="divTodo">
-            <li className="timeTodo" key={artist.id}>{artist.time}h:</li>
+            <li className="timeTodo" key={artist.id}>
+              Horário: {artist.time}
+            </li>
             <li key={artist.id} className="itemTodo">
               {artist.name}{" "}
               <button
                 onClick={() => {
-                  setArtists(artists.filter((a) => a.id !== artist.id));
+                  setTask(task.filter((a) => a.id !== artist.id));
                 }}
               >
                 <BiTrash />

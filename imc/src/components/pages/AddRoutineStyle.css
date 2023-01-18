@@ -57,6 +57,7 @@ input {
 .timeTodo{
   background-color: var(--lightMed);
   padding: .6em;
+  width: 140px;
 }
 
 .listTodo {
