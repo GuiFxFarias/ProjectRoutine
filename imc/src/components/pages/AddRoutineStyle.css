@@ -49,59 +49,7 @@ input {
   border: 1px solid var(--MedDark);
 }
 
-.divTodo{
+.divTodo {
   display: flex;
   align-items: center;
-}
-
-.timeTodo{
-  background-color: var(--lightMed);
-  padding: .6em;
-  width: 140px;
-}
-
-.listTodo {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-  margin: auto;
-  background-color: var(--Medium);
-  width: 100%;
-  max-width: 800px;
-  padding: 1em;
-  flex-direction: column;
-  align-items: center;
-}
-
-.itemTodo {
-  width: 100%;
-  max-width: 500px;
-  background-color: var(--light);
-  padding: 5px;
-  margin: .5em .5em .5em 0em;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.itemTodo button {
-  border: none;
-  background-color: var(--lightMed);
-  transition: 0.7s;
-  margin-left: 5px;
-  cursor: pointer;
-}
-
-.itemTodo button svg {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-  font-size: 14pt;
-}
-
-.itemTodo button:hover {
-  background-color: var(--MedDark);
-  color: white;
 }

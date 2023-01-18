@@ -2,42 +2,48 @@ import { useState } from "react";
 import "./AddRoutineStyle.css";
 import { BiTrash } from "react-icons/bi";
 
-let nextId = 0;
+let nextKey = 0;
 
 function AddRoutine() {
-  const [name, setName] = useState();
-  const [timeH, setTimeH] = useState();
-  const [task, setTask] = useState([]);
+  const [nameTask, setNTask] = useState();
+  const [timeTask, setTTask] = useState();
+  const [task, setTask] = useState(
+    {
+      hourTask: null,
+      nameTask: null,
+      id: null,
+    },
+  );
 
-  function handleTask(e) {
-    if (timeH === "" || name === "") {
-      e.preventDefault();
+  function localAdd(e) {
+    e.preventDefault();
+    if (timeTask === "" || nameTask === "") {
       alert("Digite algo");
-    } else if (timeH >= 24 || timeH < 0) {
-      alert("Coloque um horário correto");
-      e.preventDefault();
-      setTimeH("");
+    } else if (timeTask > 24 || timeTask < 0) {
+      alert("Digite o horário certo (00h até 23h)");
+    } else if (timeTask === undefined || nameTask === undefined) {
+      alert("Digite algo");
     } else {
+      localStorage.setItem(nameTask, JSON.stringify(timeTask));
+      let time = JSON.parse(localStorage.getItem(nameTask));
+      time = Number(time);
+      // console.log(time);
+      nextKey++;
+
       e.preventDefault();
       setTask([
         ...task,
         {
-          id: nextId++,
-          time: timeH,
-          name: name,
+          id: nextKey,
+          hourTask: time,
         },
       ]);
-      setName("");
-      setTimeH("");
+      setTTask("");
+      setNTask("");
+      // alert(`Sua tarefa (${nameTask}) inicia as ${timeTask}h`);
     }
+    console.log(task);
   }
-
-  // function handleFilter(e) {
-  //   e.preventDefault();
-  //   artists.map((artist) => {
-  //     setArtists(artists.filter((a) => a.id !== artist.id));
-  //   });
-  // }
 
   return (
     <>
@@ -48,40 +54,21 @@ function AddRoutine() {
           <input
             type="number"
             id="taskHour"
-            value={timeH}
-            onChange={(e) => setTimeH(e.target.value)}
+            value={timeTask}
+            onChange={(e) => setTTask(e.target.value)}
           />
           <label htmlFor="taskName">Informe sua tarefa</label>
           <input
             type="text"
             id="taskName"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={nameTask}
+            onChange={(e) => setNTask(e.target.value)}
           />
-          <button className="addTask" onClick={handleTask}>
+          <button className="addTask" onClick={localAdd}>
             Adicionar
           </button>
         </fieldset>
       </form>
-      <ul className="listTodo">
-        {task.map((artist) => (
-          <div className="divTodo">
-            <li className="timeTodo" key={artist.id}>
-              Horário: {artist.time}
-            </li>
-            <li key={artist.id} className="itemTodo">
-              {artist.name}{" "}
-              <button
-                onClick={() => {
-                  setTask(task.filter((a) => a.id !== artist.id));
-                }}
-              >
-                <BiTrash />
-              </button>
-            </li>
-          </div>
-        ))}
-      </ul>
     </>
   );
 }
