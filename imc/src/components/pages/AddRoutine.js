@@ -7,13 +7,10 @@ let nextKey = 0;
 function AddRoutine() {
   const [nameTask, setNTask] = useState();
   const [timeTask, setTTask] = useState();
-  const [task, setTask] = useState(
-    {
-      hourTask: null,
-      nameTask: null,
-      id: null,
-    },
-  );
+  const [task, setTask] = useState({
+    hourTask: null,
+    id: null,
+  });
 
   function localAdd(e) {
     e.preventDefault();
@@ -31,18 +28,16 @@ function AddRoutine() {
       nextKey++;
 
       e.preventDefault();
-      setTask([
+      setTask({ 
         ...task,
-        {
-          id: nextKey,
-          hourTask: time,
-        },
-      ]);
+        id: nextKey,
+        hourTask: time
+       });
       setTTask("");
       setNTask("");
       // alert(`Sua tarefa (${nameTask}) inicia as ${timeTask}h`);
+      console.log(task.hourTask);
     }
-    console.log(task);
   }
 
   return (
@@ -69,6 +64,7 @@ function AddRoutine() {
           </button>
         </fieldset>
       </form>
+      {task.hourTask}
     </>
   );
 }
