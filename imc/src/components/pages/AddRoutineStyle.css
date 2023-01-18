@@ -26,7 +26,7 @@
   font-size: 12pt;
 
   cursor: pointer;
-  transition: .7s;
+  transition: 0.7s;
 }
 
 .addTask:hover {
@@ -47,4 +47,9 @@ input {
   border-radius: 5px;
   width: 38.5%;
   border: 1px solid var(--MedDark);
+}
+
+.divTodo {
+  display: flex;
+  align-items: center;
 }
