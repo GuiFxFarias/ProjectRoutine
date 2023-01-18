@@ -10,7 +10,7 @@ function AddRoutine() {
   const [artists, setArtists] = useState([]);
 
   function handleTask(e) {
-    if (name === "") {
+    if (name === "" || time === "") {
       e.preventDefault()
       alert("Digite algo");
     } else {
@@ -25,6 +25,7 @@ function AddRoutine() {
           name: name,
         },
       ]);
+      console.log(time.time)
     }
   }
 
@@ -54,7 +55,7 @@ function AddRoutine() {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <button className="addTask" onClick={handleTask}>
+          <button className="addTask" onClick={handleTask} onClickCapture>
             Adicionar
           </button>
         </fieldset>
@@ -62,7 +63,7 @@ function AddRoutine() {
       <ul className="listTodo">
         {artists.map((artist) => (
           <div className="divTodo">
-            <li className="timeTodo">{artist.time}h:</li>
+            <li className="timeTodo" key={artist.id}>{artist.time}h:</li>
             <li key={artist.id} className="itemTodo">
               {artist.name}{" "}
               <button
