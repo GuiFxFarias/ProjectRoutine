@@ -1,26 +1,45 @@
-import { useState } from "react";
+import { createMemoryHistory } from "@remix-run/router";
 import "./RoutineStyle.css";
 
 function Routine() {
   let item = Object.keys(localStorage);
-  let values = localStorage.getItem(item);
 
   function handleClick() {
-    console.log(values);
+    let valus;
+    let itens = [];
+
+    item.map((a) => {
+      valus = { key: a, value: Number(JSON.parse(localStorage.getItem(a))) };
+      // valus.set(`${a}`, Number(JSON.parse(localStorage.getItem(a))));
+      itens.push(valus);
+    });
+  }
+
+  function SortArrayName() {
+    return (
+      <>
+        <ul className="listName">
+          {item.map((a, i) => (
+            <li className="itensN" key={i}>
+              {a}
+            </li>
+          ))}
+        </ul>
+        <ul className="listHour">
+          {item.map((a, i) => (
+            <li className="itensR" key={i}>
+              {JSON.parse(localStorage.getItem(a))}
+            </li>
+          ))}
+        </ul>
+      </>
+    );
   }
 
   function HandleList() {
     return (
       <div className="backList">
-        {" "}
-        <ul className="listHour">
-          {item.map((a, i) => (
-            <li key={i} className="itensR">
-              {a}
-            </li>
-          ))}
-        </ul>
-        <ul className="listName"></ul>
+        <SortArrayName />
       </div>
     );
   }

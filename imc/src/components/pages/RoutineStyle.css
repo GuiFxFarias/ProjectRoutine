@@ -19,8 +19,31 @@
   margin: auto;
 
   display: flex;
+  justify-content: center;
 }
 
 .listHour {
-  background-color: var(--Medium);
+  list-style: none;
+  padding: 0px;
+}
+
+.itensR {
+  padding: 15px;
+  background-color: var(--Red);
+  color: white;
+  font-weight: bold;
+  margin: 5px 0px;
+  width: 150px;
+}
+
+.listName {
+  list-style: none;
+  padding: 0px;
+}
+
+.itensN {
+  background-color: var(--lightMed);
+  padding: 15px;
+  margin: 5px 0px;
+  width: 200px;
 }
