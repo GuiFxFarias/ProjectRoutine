@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./AddRoutineStyle.css";
 import { BiTrash } from "react-icons/bi";
 
@@ -7,13 +7,10 @@ let nextKey = 0;
 function AddRoutine() {
   const [nameTask, setNTask] = useState();
   const [timeTask, setTTask] = useState();
-  const [task, setTask] = useState(
-    {
-      hourTask: null,
-      nameTask: null,
-      id: null,
-    },
-  );
+  const [task, setTask] = useState({
+    hourTask: null,
+    id: null,
+  });
 
   function localAdd(e) {
     e.preventDefault();
@@ -31,18 +28,19 @@ function AddRoutine() {
       nextKey++;
 
       e.preventDefault();
-      setTask([
+      setTask({
         ...task,
-        {
-          id: nextKey,
-          hourTask: time,
-        },
-      ]);
+        id: nextKey,
+        hourTask: time,
+      });
       setTTask("");
       setNTask("");
       // alert(`Sua tarefa (${nameTask}) inicia as ${timeTask}h`);
+      // const timer = setTimeout(() => {
+      //   console.log("A hora é " + task.hourTask);
+      // }, 5000);
+      // console.log(timer)
     }
-    console.log(task);
   }
 
   return (
@@ -69,6 +67,7 @@ function AddRoutine() {
           </button>
         </fieldset>
       </form>
+      {task.hourTask}
     </>
   );
 }
