@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./AddRoutineStyle.css";
 import { BiTrash } from "react-icons/bi";
 
@@ -28,15 +28,18 @@ function AddRoutine() {
       nextKey++;
 
       e.preventDefault();
-      setTask({ 
+      setTask({
         ...task,
         id: nextKey,
-        hourTask: time
-       });
+        hourTask: time,
+      });
       setTTask("");
       setNTask("");
       // alert(`Sua tarefa (${nameTask}) inicia as ${timeTask}h`);
-      console.log(task.hourTask);
+      // const timer = setTimeout(() => {
+      //   console.log("A hora é " + task.hourTask);
+      // }, 5000);
+      // console.log(timer)
     }
   }
 

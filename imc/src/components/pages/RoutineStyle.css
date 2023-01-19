@@ -1,0 +1,26 @@
+:root {
+  --light: #fcfffe;
+  --lightMed: #e3e6e4;
+  --Medium: #bdbfbe;
+  --MedDark: #7e807f;
+  --Dark: #3f403f;
+  --Red: #ff4e4e;
+}
+
+.routine {
+  text-align: center;
+}
+
+.backList {
+  background-color: var(--MedDark);
+  padding: 0.5em;
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+
+  display: flex;
+}
+
+.listHour {
+  background-color: var(--Medium);
+}
