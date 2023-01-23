@@ -1,5 +1,4 @@
-import { createMemoryHistory } from "@remix-run/router";
-import { useState } from "react";
+import { BsFillTrashFill } from "react-icons/bs";
 import "./RoutineStyle.css";
 
 function Routine() {
@@ -20,8 +19,6 @@ function Routine() {
 
   values.sort((a, b) => (a.value > b.value ? 1 : a.value < b.value ? -1 : 0));
 
-  let filterArray
-
   function handleClick(e) {
     const element = e.target.value;
 
@@ -29,13 +26,16 @@ function Routine() {
       if (valor.key == element) {
         // console.log("Key: " + valor.key);
 
-        filterArray = values.filter((filtered) => {
+        values.filter((filtered) => {
           if (filtered.key == element) {
             localStorage.removeItem(filtered.key);
+            document.location.reload();
           }
         });
       }
     });
+
+    console.log(values);
   }
 
   function SortArrayName() {
@@ -73,7 +73,6 @@ function Routine() {
   return (
     <>
       <h2 className="routine">Sua Rotina</h2>
-      <button onClick={handleClick}>Clique</button>
       <HandleList />
     </>
   );

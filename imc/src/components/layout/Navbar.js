@@ -10,8 +10,7 @@ function Navbar() {
   return (
     <>
       <nav className="navbar">
-        <div className="name">Name</div>
-        <div className="placeLogin">Login</div>
+        <div className="name">Tempo de qualidade</div>
       </nav>
       <MobileMenu />
     </>
