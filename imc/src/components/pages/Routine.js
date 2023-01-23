@@ -1,17 +1,40 @@
 import { createMemoryHistory } from "@remix-run/router";
+import { useState } from "react";
 import "./RoutineStyle.css";
 
 function Routine() {
   let item = Object.keys(localStorage);
 
-  function handleClick() {
-    let valus;
-    let itens = [];
+  let valus;
+  let values = [];
+  let n = 0;
 
-    item.map((a) => {
-      valus = { key: a, value: Number(JSON.parse(localStorage.getItem(a))) };
-      // valus.set(`${a}`, Number(JSON.parse(localStorage.getItem(a))));
-      itens.push(valus);
+  item.map((chave, i) => {
+    valus = {
+      id: n++,
+      key: chave,
+      value: Number(JSON.parse(localStorage.getItem(chave))),
+    };
+    values.push(valus);
+  });
+
+  values.sort((a, b) => (a.value > b.value ? 1 : a.value < b.value ? -1 : 0));
+
+  let filterArray
+
+  function handleClick(e) {
+    const element = e.target.value;
+
+    values.map((valor) => {
+      if (valor.key == element) {
+        // console.log("Key: " + valor.key);
+
+        filterArray = values.filter((filtered) => {
+          if (filtered.key == element) {
+            localStorage.removeItem(filtered.key);
+          }
+        });
+      }
     });
   }
 
@@ -19,16 +42,19 @@ function Routine() {
     return (
       <>
         <ul className="listName">
-          {item.map((a, i) => (
+          {values.map((a, i) => (
             <li className="itensN" key={i}>
-              {a}
+              {a.key}
             </li>
           ))}
         </ul>
         <ul className="listHour">
-          {item.map((a, i) => (
+          {values.map((a, i) => (
             <li className="itensR" key={i}>
-              {JSON.parse(localStorage.getItem(a))}
+              {a.value}
+              <button className="delete" value={a.key} onClick={handleClick}>
+                Delete
+              </button>
             </li>
           ))}
         </ul>

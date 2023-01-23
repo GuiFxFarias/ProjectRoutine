@@ -34,6 +34,9 @@
   font-weight: bold;
   margin: 5px 0px;
   width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .listName {
@@ -46,4 +49,17 @@
   padding: 15px;
   margin: 5px 0px;
   width: 200px;
+}
+
+.delete{
+  border: 1px solid var(--Dark);
+  color: black;
+  cursor: pointer;
+  background-color: var(--Red);
+  transition: .7s;
+}
+
+.delete:hover{
+  background-color: var(--Dark);
+  color: white;
 }
