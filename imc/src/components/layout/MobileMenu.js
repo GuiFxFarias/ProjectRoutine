@@ -14,7 +14,6 @@ function MobileMenu() {
         <Link to={"/"}>Home</Link>
       </li>
       <li className="categoriesItem">Dicas</li>
-      <li className="categoriesItem">Configurações</li>
     </ul>
   );
 }

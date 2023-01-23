@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./AddRoutineStyle.css";
+import PopMessage from "../layout/PopMessage";
 
 let nextKey = 0;
 
@@ -23,9 +24,14 @@ function AddRoutine() {
       hourTask: time,
     });
 
-
     setTTask("");
     setNTask("");
+  }
+
+  function handleClick(e) {
+    e.preventDefault();
+
+    return <PopMessage msg={'aDICIONADO A MESNAGEM'} />;
   }
 
   function localAdd(e) {
@@ -39,11 +45,6 @@ function AddRoutine() {
       alert("Digite algo");
     } else {
       localStoAdd();
-      // alert(`Sua tarefa (${nameTask}) inicia as ${timeTask}h`);
-      // const timer = setTimeout(() => {
-      //   console.log("A hora é " + task.hourTask);
-      // }, 5000);
-      // console.log(timer)
     }
   }
 
@@ -66,12 +67,11 @@ function AddRoutine() {
             value={nameTask}
             onChange={(e) => setNTask(e.target.value)}
           />
-          <button className="addTask" onClick={localAdd}>
+          <button className="addTask" onClick={handleClick}>
             Adicionar
           </button>
         </fieldset>
       </form>
-      {task.hourTask}
     </>
   );
 }

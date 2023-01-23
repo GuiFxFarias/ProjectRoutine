@@ -28,13 +28,13 @@
 }
 
 .itensR {
-  padding: 15px;
   background-color: var(--Red);
   color: white;
   font-weight: bold;
   margin: 5px 0px;
   width: 150px;
   display: flex;
+  height: 55.5px;
   align-items: center;
   justify-content: space-around;
 }
@@ -49,17 +49,19 @@
   padding: 15px;
   margin: 5px 0px;
   width: 200px;
+  height: 25.5px;
 }
 
 .delete{
-  border: 1px solid var(--Dark);
-  color: black;
+  color: white;
   cursor: pointer;
-  background-color: var(--Red);
+  background-color: var(--Dark);
   transition: .7s;
+  font-size: 11pt;
+  border-radius: 5px;
 }
 
 .delete:hover{
-  background-color: var(--Dark);
-  color: white;
+  color: var(--Dark);
+  background-color: var(--light)
 }
