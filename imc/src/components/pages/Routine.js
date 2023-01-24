@@ -4,6 +4,7 @@ import "./RoutineStyle.css";
 import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.min.css";
+import { useState } from "react";
 
 function Routine() {
   let item = Object.keys(localStorage);
@@ -15,15 +16,13 @@ function Routine() {
   item.map((chave, i) => {
     valus = {
       id: n++,
-      key: chave,
+      key: chave.toLowerCase(),
       value: Number(JSON.parse(localStorage.getItem(chave))),
     };
     values.push(valus);
   });
 
   values.sort((a, b) => (a.value > b.value ? 1 : a.value < b.value ? -1 : 0));
-
-  const notify = () => toast("Item removido !");
 
   function handleClick(e) {
     const element = e.target.value;
@@ -37,7 +36,7 @@ function Routine() {
             localStorage.removeItem(filtered.key);
             toast("Item removido !", {
               position: "top-right",
-              autoClose: 1500,
+              autoClose: 1000,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
@@ -47,7 +46,7 @@ function Routine() {
             });
             setTimeout(() => {
               document.location.reload();
-            }, 2200);
+            }, 1500);
           }
         });
       }
@@ -78,6 +77,56 @@ function Routine() {
     );
   }
 
+  function TimeTask() {
+    const [nameOne, setNameOne] = useState();
+    const [nameTwo, setNameTwo] = useState();
+
+    function handleTest(e) {
+      e.preventDefault();
+
+      console.log(values);
+
+      values.filter((item) => {
+        if (item.key == nameOne) {
+          console.log(item.value);
+        }
+        if (item.key == nameTwo) {
+          console.log("Certo02");
+        }
+      });
+    }
+
+    return (
+      <>
+        <h2 className="tittleCalc">Calcule o tempo em cada tarefa</h2>
+        <div className="instructions">
+          Se voce quiser saber quanto tempo tem de uma tarefa para outra, insira
+          os nome das tarefas que deseja
+        </div>
+        <form>
+          <fieldset className="questionHour">
+            <label htmlFor="task">Insira a primeira tarefa</label>
+            <input
+              type="text"
+              id="task"
+              value={nameOne}
+              onChange={(e) => setNameOne(e.target.value)}
+            />
+            <label htmlFor="secTask">Insira a segunda tarefa</label>
+            <input
+              type="text"
+              id="secTask"
+              value={nameTwo}
+              onChange={(e) => setNameTwo(e.target.value)}
+            />
+            <button className="addTask">Vizualiar</button>
+          </fieldset>
+          <button onClick={handleTest}>Clique</button>
+        </form>
+      </>
+    );
+  }
+
   function HandleList() {
     return (
       <div className="backList">
@@ -88,6 +137,7 @@ function Routine() {
 
   return (
     <>
+      <TimeTask />
       <h2 className="routine">Sua Rotina</h2>
       <HandleList />
       <ToastContainer />
