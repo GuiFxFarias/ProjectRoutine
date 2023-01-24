@@ -81,19 +81,42 @@ function Routine() {
     const [nameOne, setNameOne] = useState();
     const [nameTwo, setNameTwo] = useState();
 
-    function handleTest(e) {
+    const [timeOne, setTimeOne] = useState();
+    const [timeTwo, setTimeTwo] = useState();
+
+    function handleCalc(e) {
       e.preventDefault();
 
-      console.log(values);
+      let time;
 
-      values.filter((item) => {
-        if (item.key == nameOne) {
-          console.log(item.value);
-        }
-        if (item.key == nameTwo) {
-          console.log("Certo02");
-        }
-      });
+      if (nameOne < nameTwo) {
+        values.filter((item) => {
+          if (item.key == nameOne) {
+            setTimeOne(item.value);
+          }
+          if (item.key == nameTwo) {
+            setTimeTwo(item.value);
+          }
+        });
+
+        time = timeTwo - timeTwo;
+        console.log(values);
+      } else {
+        alert(
+          "Coloque as tarefas em ordens, sendo a primeira tarefa, a mais cedo"
+        );
+      }
+      alert(`De uma tarefa para outra voce tem ${time}`);
+    }
+
+    function calcTime(e) {
+      e.preventDefault();
+
+      return (
+        <>
+          <h1>Time now</h1>
+        </>
+      );
     }
 
     return (
@@ -119,9 +142,10 @@ function Routine() {
               value={nameTwo}
               onChange={(e) => setNameTwo(e.target.value)}
             />
-            <button className="addTask">Vizualiar</button>
+            <button onClick={handleCalc} className="addTask">
+              Vizualiar
+            </button>
           </fieldset>
-          <button onClick={handleTest}>Clique</button>
         </form>
       </>
     );
