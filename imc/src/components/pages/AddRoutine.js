@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import "./AddRoutineStyle.css";
-import PopMessage from "../layout/PopMessage";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.min.css";
 
 let nextKey = 0;
 
 function AddRoutine() {
+  const [message, setMessage] = useState(false);
   const [nameTask, setNTask] = useState();
   const [timeTask, setTTask] = useState();
   const [task, setTask] = useState({
@@ -30,8 +33,6 @@ function AddRoutine() {
 
   function handleClick(e) {
     e.preventDefault();
-
-    return <PopMessage msg={'aDICIONADO A MESNAGEM'} />;
   }
 
   function localAdd(e) {
@@ -45,6 +46,7 @@ function AddRoutine() {
       alert("Digite algo");
     } else {
       localStoAdd();
+      toast("Item Adicinado !");
     }
   }
 
@@ -67,11 +69,12 @@ function AddRoutine() {
             value={nameTask}
             onChange={(e) => setNTask(e.target.value)}
           />
-          <button className="addTask" onClick={handleClick}>
+          <button className="addTask" onClick={localAdd}>
             Adicionar
           </button>
         </fieldset>
       </form>
+      <ToastContainer />
     </>
   );
 }
