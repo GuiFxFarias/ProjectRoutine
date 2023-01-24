@@ -1,6 +1,10 @@
 import { BsFillTrashFill } from "react-icons/bs";
 import "./RoutineStyle.css";
 
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.min.css";
+
 function Routine() {
   let item = Object.keys(localStorage);
 
@@ -19,6 +23,8 @@ function Routine() {
 
   values.sort((a, b) => (a.value > b.value ? 1 : a.value < b.value ? -1 : 0));
 
+  const notify = () => toast("Item removido !");
+
   function handleClick(e) {
     const element = e.target.value;
 
@@ -29,13 +35,23 @@ function Routine() {
         values.filter((filtered) => {
           if (filtered.key == element) {
             localStorage.removeItem(filtered.key);
-            document.location.reload();
+            toast("Item removido !", {
+              position: "top-right",
+              autoClose: 1500,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+            setTimeout(() => {
+              document.location.reload();
+            }, 2200);
           }
         });
       }
     });
-
-    console.log(values);
   }
 
   function SortArrayName() {
@@ -74,6 +90,7 @@ function Routine() {
     <>
       <h2 className="routine">Sua Rotina</h2>
       <HandleList />
+      <ToastContainer />
     </>
   );
 }
