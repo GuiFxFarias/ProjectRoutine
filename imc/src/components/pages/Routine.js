@@ -25,30 +25,13 @@ function Routine() {
   values.sort((a, b) => (a.value > b.value ? 1 : a.value < b.value ? -1 : 0));
 
   function handleClick(e) {
+    e.preventDefault();
+
     const element = e.target.value;
 
-    values.map((valor) => {
-      if (valor.key == element) {
-        // console.log("Key: " + valor.key);
-
-        values.filter((filtered) => {
-          if (filtered.key == element) {
-            localStorage.removeItem(filtered.key);
-            toast("Item removido !", {
-              position: "top-right",
-              autoClose: 1000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            });
-            setTimeout(() => {
-              document.location.reload();
-            }, 1500);
-          }
-        });
+    values.map((chave, i) => {
+      if (element == chave.key) {
+        console.log(chave);
       }
     });
   }
@@ -84,10 +67,10 @@ function Routine() {
     const [timeOne, setTimeOne] = useState();
     const [timeTwo, setTimeTwo] = useState();
 
+    const [time, setTime] = useState();
+
     function handleCalc(e) {
       e.preventDefault();
-
-      let time;
 
       if (nameOne < nameTwo) {
         values.filter((item) => {
@@ -99,14 +82,15 @@ function Routine() {
           }
         });
 
-        time = timeTwo - timeTwo;
+        setTime(timeTwo - timeOne);
+
+        alert(`De uma tarefa para outra voce tem ${time}`);
         console.log(values);
       } else {
         alert(
           "Coloque as tarefas em ordens, sendo a primeira tarefa, a mais cedo"
         );
       }
-      alert(`De uma tarefa para outra voce tem ${time}`);
     }
 
     function calcTime(e) {
@@ -142,9 +126,7 @@ function Routine() {
               value={nameTwo}
               onChange={(e) => setNameTwo(e.target.value)}
             />
-            <button onClick={handleCalc} className="addTask">
-              Vizualiar
-            </button>
+            <button className="addTask">Vizualiar</button>
           </fieldset>
         </form>
       </>
@@ -170,3 +152,14 @@ function Routine() {
 }
 
 export default Routine;
+
+// toast("Item removido !", {
+//     position: "top-right",
+//     autoClose: 1000,
+//     hideProgressBar: false,
+//     closeOnClick: true,
+//     pauseOnHover: true,
+//     draggable: true,
+//     progress: undefined,
+//     theme: "light",
+//   });
