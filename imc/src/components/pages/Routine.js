@@ -4,57 +4,42 @@ import "./RoutineStyle.css";
 import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.min.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Routine() {
-  let item = Object.keys(localStorage);
+  // let item = Object.keys(localStorage);
 
-  let valus;
-  let values = [];
-  let n = 0;
+  // let itens;
+  // let values = [];
+  // let n = 0;
 
-  item.map((chave, i) => {
-    valus = {
-      id: n++,
-      key: chave.toLowerCase(),
-      value: Number(JSON.parse(localStorage.getItem(chave))),
-    };
-    values.push(valus);
-  });
+  // item.map((chave) => {
+  //   itens = {
+  //     id: n++,
+  //     key: chave.toLowerCase(),
+  //     value: Number(JSON.parse(localStorage.getItem(chave))),
+  //   };
+  //   values.push(itens);
+  // });
 
-  values.sort((a, b) => (a.value > b.value ? 1 : a.value < b.value ? -1 : 0));
+  // values.sort((a, b) => (a.value > b.value ? 1 : a.value < b.value ? -1 : 0));
+
+  const [task, setTask] = useState([]);
 
   function handleClick(e) {
-    e.preventDefault();
-
     const element = e.target.value;
 
-    values.map((chave, i) => {
-      if (element == chave.key) {
-        console.log(chave);
-      }
-    });
+    console.log(task);
   }
 
   function SortArrayName() {
     return (
       <>
         <ul className="listName">
-          {values.map((a, i) => (
-            <li className="itensN" key={i}>
-              {a.key}
-            </li>
-          ))}
+          <li className="itensN"></li>
         </ul>
         <ul className="listHour">
-          {values.map((a, i) => (
-            <li className="itensR" key={i}>
-              {a.value}
-              <button className="delete" value={a.key} onClick={handleClick}>
-                Delete
-              </button>
-            </li>
-          ))}
+          <li className="itensR"></li>
         </ul>
       </>
     );
@@ -64,33 +49,35 @@ function Routine() {
     const [nameOne, setNameOne] = useState();
     const [nameTwo, setNameTwo] = useState();
 
-    const [timeOne, setTimeOne] = useState();
-    const [timeTwo, setTimeTwo] = useState();
-
-    const [time, setTime] = useState();
-
     function handleCalc(e) {
-      e.preventDefault();
-
-      if (nameOne < nameTwo) {
-        values.filter((item) => {
-          if (item.key == nameOne) {
-            setTimeOne(item.value);
-          }
-          if (item.key == nameTwo) {
-            setTimeTwo(item.value);
-          }
-        });
-
-        setTime(timeTwo - timeOne);
-
-        alert(`De uma tarefa para outra voce tem ${time}`);
-        console.log(values);
-      } else {
-        alert(
-          "Coloque as tarefas em ordens, sendo a primeira tarefa, a mais cedo"
-        );
-      }
+      // e.preventDefault();
+      // let timeOne = 0;
+      // let timeTwo = 0;
+      // if (nameOne > nameTwo) {
+      //   values.filter((item) => {
+      //     if (item.key == nameOne) {
+      //       timeOne = item.value;
+      //     }
+      //     if (item.key == nameTwo) {
+      //       timeTwo = item.value;
+      //     }
+      //   });
+      //   let time = timeTwo - timeOne;
+      //   toast(`Voce tem ${time}h de uma tarefa para outra`, {
+      //     position: "top-center",
+      //     autoClose: 5000,
+      //     hideProgressBar: false,
+      //     closeOnClick: true,
+      //     pauseOnHover: true,
+      //     draggable: true,
+      //     progress: undefined,
+      //     theme: "light",
+      //   });
+      // } else {
+      //   alert(
+      //     "Coloque as tarefas em ordens, sendo a primeira tarefa, a mais cedo"
+      //   );
+      // }
     }
 
     function calcTime(e) {
@@ -144,6 +131,7 @@ function Routine() {
   return (
     <>
       <TimeTask />
+      <button onClick={handleClick}>Clica</button>
       <h2 className="routine">Sua Rotina</h2>
       <HandleList />
       <ToastContainer />
