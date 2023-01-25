@@ -65,3 +65,28 @@
   color: var(--Dark);
   background-color: var(--light)
 }
+
+.tittleCalc{
+  text-align: center;
+}
+
+.questionHour{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 900px;
+  width: 100%;
+  align-items: center;
+  border: none;
+}
+
+.instructions{
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  background-color: var(--MedDark);
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
