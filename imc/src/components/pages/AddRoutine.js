@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./AddRoutineStyle.css";
 import { ToastContainer, toast } from "react-toastify";
-import MaskedInput from 'react-text-mask'
+import MaskedInput from "react-text-mask";
 
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -17,7 +17,7 @@ function AddRoutine() {
   });
 
   function localStoAdd() {
-    localStorage.setItem(nameTask, JSON.stringify(timeTask));
+    localStorage.setItem(nameTask.toLowerCase(), JSON.stringify(timeTask));
     let time = JSON.parse(localStorage.getItem(nameTask));
     time = Number(time);
     nextKey++;
