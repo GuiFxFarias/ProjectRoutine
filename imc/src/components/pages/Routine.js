@@ -29,7 +29,6 @@ function Routine() {
     values.sort((a, b) => (a.value > b.value ? 1 : a.value < b.value ? -1 : 0));
 
     setTask(values);
-    console.log(task);
   }
 
   useEffect(() => {
@@ -63,7 +62,7 @@ function Routine() {
         <ul className="listName">
           {task.map((a, i) => (
             <li className="itensN" key={i}>
-              {a.key}
+              {a.key[0].toUpperCase() + a.key.substring(1)}
             </li>
           ))}
         </ul>
@@ -121,14 +120,14 @@ function Routine() {
           OnehourTask = OnehourTask.slice(0, OnehourTask.length - 3);
 
           OneminuteTask = a.value;
-          OneminuteTask = OneminuteTask.slice(3, OneminuteTask.lenght);
+          OneminuteTask = OneminuteTask.slice(3, OneminuteTask.length);
         }
         if (a.key == nameTwo) {
           TwohourTask = a.value;
           TwohourTask = TwohourTask.slice(0, TwohourTask.length - 3);
 
           TwominuteTask = a.value;
-          TwominuteTask = TwominuteTask.slice(3, TwominuteTask.length - 3);
+          TwominuteTask = TwominuteTask.slice(3, TwominuteTask.length);
         }
       });
 
@@ -139,32 +138,45 @@ function Routine() {
         `${monthDate} ${day}, ${year} ${TwohourTask}:${TwominuteTask}:${second}:${miliSecond}`
       );
 
-      const ms = newDate2 - newDate1;
+      if (newDate1 < newDate2) {
+        const ms = newDate2 - newDate1;
 
-      let s = ms / 1000;
-      let m = 0;
-      let h = 0;
+        let s = ms / 1000;
+        let m = 0;
+        let h = 0;
 
-      while (s > 59) {
-        s -= 60;
-        m++;
+        while (s > 59) {
+          s -= 60;
+          m++;
+        }
+
+        while (m > 59) {
+          m -= 60;
+          h++;
+        }
+
+        toast(`Você tem ${h}h${m} entre uma tarefa e outra`, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      } else {
+        toast(`Coloque a tarefa mais cedo em primeiro`, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
-
-      while (m > 59) {
-        m -= 60;
-        h++;
-      }
-
-      toast(`Você tem ${h}h${m} entre uma tarefa e outra`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
     }
 
     return (

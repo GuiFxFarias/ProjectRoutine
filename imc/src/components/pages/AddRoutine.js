@@ -58,9 +58,6 @@ function AddRoutine() {
   return (
     <>
       <h1>Crie sua rotina</h1>
-      <h1>
-        <button onClick={handleClick}>Clique</button>
-      </h1>
       <form>
         <fieldset className="listInputs">
           <label htmlFor="taskHour">Informe a hora de sua tarefa</label>
