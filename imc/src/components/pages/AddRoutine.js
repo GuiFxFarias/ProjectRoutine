@@ -35,7 +35,9 @@ function AddRoutine() {
   function handleClick(e) {
     e.preventDefault();
 
-    console.log(nameTask, timeTask);
+    let times = [];
+
+    
   }
 
   function localAdd(e) {

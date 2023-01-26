@@ -91,29 +91,54 @@ function Routine() {
 
     function handleCalc(e) {
       e.preventDefault();
-      let timeOne = 0;
-      let timeTwo = 0;
-
-      let ms = 0;
-
-      let segundos = (ms / 1000) % 60; // se não precisar de segundos, basta remover esta linha.
-      let minutos = (ms / 60000) % 60; // 60000   = 60 * 1000
-      let horas = ms / 3600000; // 3600000 = 60 * 60 * 1000
-      let dias = ms / 86400000;
+      let timeHour = 0;
+      let timeMinute = 0;
 
       setNameOne(nameOne.toLowerCase());
       setNameTwo(nameTwo.toLowerCase());
 
+      const date = new Date();
+
+      let OnehourTask;
+      let OneminuteTask;
+
+      let TwohourTask;
+      let TwominuteTask;
+
+      const year = date.getFullYear();
+      const monthDate = date.toLocaleString("default", { month: "long" });
+      const day = date.getDate();
+
+      const hour = date.getHours(OnehourTask);
+      const minute = date.getMinutes();
+      const second = date.getSeconds();
+      const miliSecond = date.getMilliseconds(hour);
+
       task.map((a) => {
         if (a.key == nameOne) {
-          timeOne = a.value;
+          OnehourTask = a.value;
+          OnehourTask = OnehourTask.slice(0, OnehourTask.length - 3);
+
+          OneminuteTask = a.value;
+          OneminuteTask = OneminuteTask.slice(3, OneminuteTask.lenght);
         }
         if (a.key == nameTwo) {
-          timeTwo = a.value;
+          TwohourTask = a.value;
+          TwohourTask = TwohourTask.slice(0, TwohourTask.length - 3);
+
+          TwominuteTask = a.value;
+          TwominuteTask = TwominuteTask.slice(3, TwominuteTask.length - 3);
         }
       });
-      console.log(timeOne);
 
+      const newDate1 = new Date(
+        `${monthDate} ${day}, ${year} ${OnehourTask}:${OneminuteTask}:${second} `
+      );
+      const newDate2 = new Date(
+        `${monthDate} ${day}, ${year} ${TwohourTask}:${TwominuteTask}:${second} `
+      );
+
+      console.log(`Hora 1: ${newDate1} Data 2: ${newDate2}`);
       // if (timeOne < timeTwo) {
       //   let time = timeTwo - timeOne;
       //   toast(`Voce tem ${time}h de uma tarefa para outra`, {
