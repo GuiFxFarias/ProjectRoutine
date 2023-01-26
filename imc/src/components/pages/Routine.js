@@ -29,6 +29,7 @@ function Routine() {
     values.sort((a, b) => (a.value > b.value ? 1 : a.value < b.value ? -1 : 0));
 
     setTask(values);
+    console.log(task);
   }
 
   useEffect(() => {
@@ -132,44 +133,43 @@ function Routine() {
       });
 
       const newDate1 = new Date(
-        `${monthDate} ${day}, ${year} ${OnehourTask}:${OneminuteTask}:${second} `
+        `${monthDate} ${day}, ${year} ${OnehourTask}:${OneminuteTask}:${second}:${miliSecond}`
       );
       const newDate2 = new Date(
-        `${monthDate} ${day}, ${year} ${TwohourTask}:${TwominuteTask}:${second} `
+        `${monthDate} ${day}, ${year} ${TwohourTask}:${TwominuteTask}:${second}:${miliSecond}`
       );
 
-      console.log(`Hora 1: ${newDate1} Data 2: ${newDate2}`);
-      // if (timeOne < timeTwo) {
-      //   let time = timeTwo - timeOne;
-      //   toast(`Voce tem ${time}h de uma tarefa para outra`, {
-      //     position: "top-center",
-      //     autoClose: 5000,
-      //     hideProgressBar: false,
-      //     closeOnClick: true,
-      //     pauseOnHover: false,
-      //     draggable: true,
-      //     progress: undefined,
-      //     theme: "light",
-      //   });
-      // } else {
-      //   toast(`Coloque primeiro a tarefa mais cedo`, {
-      //     position: "top-center",
-      //     autoClose: 5000,
-      //     hideProgressBar: false,
-      //     closeOnClick: true,
-      //     pauseOnHover: false,
-      //     draggable: true,
-      //     progress: undefined,
-      //     theme: "light",
-      //   });
-      // }
+      const ms = newDate2 - newDate1;
+
+      let s = ms / 1000;
+      let m = 0;
+      let h = 0;
+
+      while (s > 59) {
+        s -= 60;
+        m++;
+      }
+
+      while (m > 59) {
+        m -= 60;
+        h++;
+      }
+
+      toast(`Você tem ${h}h${m} entre uma tarefa e outra`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
 
     return (
       <>
-        <h1>
-          <button onClick={handleCalc}>Clique Aq</button>
-        </h1>
+        <h1></h1>
         <h2 className="tittleCalc">Calcule o tempo em cada tarefa</h2>
         <div className="instructions">
           Se voce quiser saber quanto tempo tem de uma tarefa para outra, insira
