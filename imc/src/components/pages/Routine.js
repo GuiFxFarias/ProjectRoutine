@@ -7,54 +7,104 @@ import "react-toastify/dist/ReactToastify.min.css";
 import { useEffect, useState } from "react";
 
 function Routine() {
-  // let item = Object.keys(localStorage);
-
-  // let itens;
-  // let values = [];
-  // let n = 0;
-
-  // item.map((chave) => {
-  //   itens = {
-  //     id: n++,
-  //     key: chave.toLowerCase(),
-  //     value: Number(JSON.parse(localStorage.getItem(chave))),
-  //   };
-  //   values.push(itens);
-  // });
-
-  // values.sort((a, b) => (a.value > b.value ? 1 : a.value < b.value ? -1 : 0));
-
   const [task, setTask] = useState([]);
+
+  function addStorage() {
+    let values = [];
+
+    let item = Object.keys(localStorage);
+
+    let itens;
+    let n = 0;
+
+    item.map((chave) => {
+      itens = {
+        id: n++,
+        key: chave.toLowerCase(),
+        value: Number(JSON.parse(localStorage.getItem(chave))),
+      };
+      values.push(itens);
+    });
+
+    values.sort((a, b) => (a.value > b.value ? 1 : a.value < b.value ? -1 : 0));
+
+    setTask(values);
+  }
+
+  useEffect(() => {
+    addStorage();
+  }, []);
 
   function handleClick(e) {
     const element = e.target.value;
 
-    console.log(task);
+    task.map((a) => {
+      if (element == a.key) {
+        localStorage.removeItem(element);
+        toast("Item removido !", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+    });
+    addStorage();
   }
 
   function SortArrayName() {
     return (
       <>
         <ul className="listName">
-          <li className="itensN"></li>
+          {task.map((a, i) => (
+            <li className="itensN" key={i}>
+              {a.key}
+            </li>
+          ))}
         </ul>
         <ul className="listHour">
-          <li className="itensR"></li>
+          {task.map((a, i) => (
+            <li className="itensR" key={i}>
+              {a.value}
+              <button
+                className="delete"
+                value={a.key}
+                key={i}
+                onClick={handleClick}
+              >
+                Delete
+              </button>
+            </li>
+          ))}
         </ul>
       </>
     );
   }
 
   function TimeTask() {
-    const [nameOne, setNameOne] = useState();
-    const [nameTwo, setNameTwo] = useState();
+    const [nameOne, setNameOne] = useState("");
+    const [nameTwo, setNameTwo] = useState("");
 
     function handleCalc(e) {
-      // e.preventDefault();
-      // let timeOne = 0;
-      // let timeTwo = 0;
-      // if (nameOne > nameTwo) {
-      //   values.filter((item) => {
+      e.preventDefault();
+      let timeOne = 0;
+      let timeTwo = 0;
+
+      setNameOne(nameOne.toLowerCase());
+      setNameTwo(nameTwo.toLowerCase());
+
+      task.map((a) => {
+        if (nameOne == a.key ) {
+          console.log(a.value);
+        }
+      });
+
+      // if (nameOne < nameTwo) {
+      //   task.filter((item) => {
       //     if (item.key == nameOne) {
       //       timeOne = item.value;
       //     }
@@ -75,7 +125,7 @@ function Routine() {
       //   });
       // } else {
       //   alert(
-      //     "Coloque as tarefas em ordens, sendo a primeira tarefa, a mais cedo"
+      //     "Coloque as tarefas em ordens, sendo a primeira tarefa, a mais tarde"
       //   );
       // }
     }
@@ -113,7 +163,9 @@ function Routine() {
               value={nameTwo}
               onChange={(e) => setNameTwo(e.target.value)}
             />
-            <button className="addTask">Vizualiar</button>
+            <button className="addTask" onClick={handleCalc}>
+              Vizualiar
+            </button>
           </fieldset>
         </form>
       </>
@@ -131,7 +183,6 @@ function Routine() {
   return (
     <>
       <TimeTask />
-      <button onClick={handleClick}>Clica</button>
       <h2 className="routine">Sua Rotina</h2>
       <HandleList />
       <ToastContainer />
@@ -140,14 +191,3 @@ function Routine() {
 }
 
 export default Routine;
-
-// toast("Item removido !", {
-//     position: "top-right",
-//     autoClose: 1000,
-//     hideProgressBar: false,
-//     closeOnClick: true,
-//     pauseOnHover: true,
-//     draggable: true,
-//     progress: undefined,
-//     theme: "light",
-//   });
