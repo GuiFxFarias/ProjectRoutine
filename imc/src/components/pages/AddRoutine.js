@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./AddRoutineStyle.css";
 import { ToastContainer, toast } from "react-toastify";
 import MaskedInput from "react-text-mask";
@@ -8,15 +8,28 @@ import "react-toastify/dist/ReactToastify.min.css";
 let nextKey = 0;
 
 function AddRoutine() {
-  const [message, setMessage] = useState(false);
+  const storage = Object.keys(localStorage);
   const [nameTask, setNTask] = useState();
   const [timeTask, setTTask] = useState();
   const [task, setTask] = useState({
     hourTask: null,
     id: null,
   });
+  const [nameTwo, setNameTwo] = useState();
+
+  useEffect(() => {
+    setNameTwo(nameTask);
+  }, [nameTwo]);
 
   function localStoAdd() {
+    let name = nameTask;
+
+    storage.map((a) => {
+      if (nameTask == a) {
+        name = nameTask + " Novamente";
+        localStorage.setItem(name.toLowerCase(), JSON.stringify(timeTask));
+      }
+    });
     localStorage.setItem(nameTask.toLowerCase(), JSON.stringify(timeTask));
     let time = JSON.parse(localStorage.getItem(nameTask));
     time = Number(time);
@@ -34,10 +47,6 @@ function AddRoutine() {
 
   function handleClick(e) {
     e.preventDefault();
-
-    let times = [];
-
-    
   }
 
   function localAdd(e) {
@@ -65,7 +74,9 @@ function AddRoutine() {
             type="time"
             id="taskHour"
             value={timeTask}
-            onChange={(e) => setTTask(e.target.value)}
+            onChange={(e) => {
+              setTTask(e.target.value);
+            }}
           />
           <label htmlFor="taskName">Informe sua tarefa</label>
           <input
