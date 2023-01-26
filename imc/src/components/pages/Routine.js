@@ -43,7 +43,7 @@ function Routine() {
         localStorage.removeItem(element);
         toast("Item removido !", {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: false,
