@@ -34,6 +34,10 @@ function AddRoutine() {
 
   function handleClick(e) {
     e.preventDefault();
+
+    let times = [];
+
+    
   }
 
   function localAdd(e) {
@@ -58,7 +62,7 @@ function AddRoutine() {
         <fieldset className="listInputs">
           <label htmlFor="taskHour">Informe a hora de sua tarefa</label>
           <input
-            type="number"
+            type="time"
             id="taskHour"
             value={timeTask}
             onChange={(e) => setTTask(e.target.value)}
