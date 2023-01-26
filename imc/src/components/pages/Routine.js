@@ -21,7 +21,7 @@ function Routine() {
       itens = {
         id: n++,
         key: chave.toLowerCase(),
-        value: Number(JSON.parse(localStorage.getItem(chave))),
+        value: String(JSON.parse(localStorage.getItem(chave))),
       };
       values.push(itens);
     });
@@ -46,7 +46,7 @@ function Routine() {
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
-          pauseOnHover: true,
+          pauseOnHover: false,
           draggable: true,
           progress: undefined,
           theme: "light",
@@ -69,7 +69,7 @@ function Routine() {
         <ul className="listHour">
           {task.map((a, i) => (
             <li className="itensR" key={i}>
-              {a.value}
+              {a.value.replace(".", "h")}
               <button
                 className="delete"
                 value={a.key}
@@ -94,54 +94,57 @@ function Routine() {
       let timeOne = 0;
       let timeTwo = 0;
 
+      let ms = 0;
+
+      let segundos = (ms / 1000) % 60; // se não precisar de segundos, basta remover esta linha.
+      let minutos = (ms / 60000) % 60; // 60000   = 60 * 1000
+      let horas = ms / 3600000; // 3600000 = 60 * 60 * 1000
+      let dias = ms / 86400000;
+
       setNameOne(nameOne.toLowerCase());
       setNameTwo(nameTwo.toLowerCase());
 
       task.map((a) => {
-        if (nameOne == a.key ) {
-          console.log(a.value);
+        if (a.key == nameOne) {
+          timeOne = a.value;
+        }
+        if (a.key == nameTwo) {
+          timeTwo = a.value;
         }
       });
+      console.log(timeOne);
 
-      // if (nameOne < nameTwo) {
-      //   task.filter((item) => {
-      //     if (item.key == nameOne) {
-      //       timeOne = item.value;
-      //     }
-      //     if (item.key == nameTwo) {
-      //       timeTwo = item.value;
-      //     }
-      //   });
+      // if (timeOne < timeTwo) {
       //   let time = timeTwo - timeOne;
       //   toast(`Voce tem ${time}h de uma tarefa para outra`, {
       //     position: "top-center",
       //     autoClose: 5000,
       //     hideProgressBar: false,
       //     closeOnClick: true,
-      //     pauseOnHover: true,
+      //     pauseOnHover: false,
       //     draggable: true,
       //     progress: undefined,
       //     theme: "light",
       //   });
       // } else {
-      //   alert(
-      //     "Coloque as tarefas em ordens, sendo a primeira tarefa, a mais tarde"
-      //   );
+      //   toast(`Coloque primeiro a tarefa mais cedo`, {
+      //     position: "top-center",
+      //     autoClose: 5000,
+      //     hideProgressBar: false,
+      //     closeOnClick: true,
+      //     pauseOnHover: false,
+      //     draggable: true,
+      //     progress: undefined,
+      //     theme: "light",
+      //   });
       // }
-    }
-
-    function calcTime(e) {
-      e.preventDefault();
-
-      return (
-        <>
-          <h1>Time now</h1>
-        </>
-      );
     }
 
     return (
       <>
+        <h1>
+          <button onClick={handleCalc}>Clique Aq</button>
+        </h1>
         <h2 className="tittleCalc">Calcule o tempo em cada tarefa</h2>
         <div className="instructions">
           Se voce quiser saber quanto tempo tem de uma tarefa para outra, insira
