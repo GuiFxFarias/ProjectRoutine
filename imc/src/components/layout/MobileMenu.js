@@ -8,12 +8,11 @@ function MobileMenu() {
         <Link to={"/AddRoutine"}>Adicionar Rotina</Link>
       </li>
       <li className="categoriesItem">
-        <Link to={"/Routine"}>Ver Rotina</Link>
-      </li>
-      <li className="categoriesItem">
         <Link to={"/"}>Home</Link>
       </li>
-      <li className="categoriesItem">Dicas</li>
+      <li className="categoriesItem">
+        <Link to={"/Routine"}>Ver Rotina</Link>
+      </li>
     </ul>
   );
 }

@@ -7,9 +7,9 @@
 }
 
 :root {
-  --light: #FCFFFE,
-  --lightMed: #E3E6E4,
-  --Medium: #BDBFBE,
-  --MedDark: #7E807F,
-  --Dark: #3F403F,
+  --light: #FDCA95;
+  --lightMed: #E3A886;
+  --Medium: #FAB29F;
+  --MedDark: #E38C86;
+  --Dark: #FD95B0;
 }

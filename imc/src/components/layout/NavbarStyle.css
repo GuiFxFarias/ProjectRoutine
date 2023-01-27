@@ -1,9 +1,9 @@
 :root {
-  --light: #fcfffe;
-  --lightMed: #e3e6e4;
-  --Medium: #bdbfbe;
-  --MedDark: #7e807f;
-  --Dark: #3f403f;
+  --light: #FDCA95;
+  --lightMed: #E3A886;
+  --Medium: #FAB29F;
+  --MedDark: #E38C86;
+  --Dark: #FD95B0;
   --Red: #ff4e4e;
 }
 
@@ -13,8 +13,8 @@
   justify-content: space-around;
   overflow-x: hidden;
 
-  color: var(--Dark);
-  background-color: #e3e6e4;
+  color: black;
+  background-color: #ffe9d2;
   padding: 5px;
   font-size: 16pt;
 }

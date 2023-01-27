@@ -1,9 +1,9 @@
 :root {
-  --light: #fcfffe;
-  --lightMed: #e3e6e4;
-  --Medium: #bdbfbe;
-  --MedDark: #7e807f;
-  --Dark: #3f403f;
+  --light: #FDCA95;
+  --lightMed: #E3A886;
+  --Medium: #FAB29F;
+  --MedDark: #E38C86;
+  --Dark: #FD95B0;
   --Red: #FF4E4E;
 }
 
@@ -29,7 +29,7 @@
   background-color: var(--lightMed);
   margin: 10px 10px 15px 10px;
   padding: 5px;
-  color: var(--Dark);
+  color: black;
 
   box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.737)
 }

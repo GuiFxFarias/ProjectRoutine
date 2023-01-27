@@ -1,9 +1,9 @@
 :root {
-  --light: #fcfffe;
-  --lightMed: #e3e6e4;
-  --Medium: #bdbfbe;
-  --MedDark: #7e807f;
-  --Dark: #3f403f;
+  --light: #fdca95;
+  --lightMed: #e3a886;
+  --Medium: #fab29f;
+  --MedDark: #e38c86;
+  --Dark: #fd95b0;
   --Red: #ff4e4e;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .backList {
-  background-color: var(--MedDark);
+  background-color: var(--Medium);
   padding: 0.5em;
   width: 100%;
   max-width: 900px;
@@ -28,6 +28,7 @@
 }
 
 .itensR {
+  transition: 0.7s;
   background-color: var(--Red);
   color: white;
   font-weight: bold;
@@ -37,6 +38,7 @@
   height: 55.5px;
   align-items: center;
   justify-content: space-around;
+  border: 1px solid black;
 }
 
 .listName {
@@ -45,33 +47,36 @@
 }
 
 .itensN {
-  background-color: var(--lightMed);
+  transition: 0.7s;
+  background-color: var(--Dark);
+  border: 1px solid black;
   padding: 15px;
   margin: 5px 0px;
   width: 200px;
   height: 25.5px;
 }
 
-.delete{
-  color: white;
+.delete {
+  color: black;
   cursor: pointer;
   background-color: var(--Dark);
-  transition: .7s;
+  transition: 0.7s;
   font-size: 11pt;
   border-radius: 5px;
 }
 
-.delete:hover{
-  color: var(--Dark);
-  background-color: var(--light)
+.delete:hover {
+  color: black;
+  background-color: var(--light);
 }
 
-.tittleCalc{
+.tittleCalc {
   text-align: center;
 }
 
-.questionHour{
+.questionHour {
   display: flex;
+  transition: 0.7s;
   flex-direction: column;
   margin: auto;
   max-width: 900px;
@@ -80,7 +85,8 @@
   border: none;
 }
 
-.instructions{
+.instructions {
+  transition: 0.7s;
   width: 100%;
   max-width: 900px;
   margin: auto;
@@ -90,3 +96,28 @@
   text-align: center;
 }
 
+@media screen and (max-width: 430px) {
+  .instructions {
+    transition: 0.7s;
+    max-width: 270px;
+    font-size: 14pt;
+  }
+
+  .questionHour {
+    transition: 0.7s;
+    max-width: 350px;
+  }
+
+  .itensR {
+    transition: 0.7s;
+    display: flex;
+    flex-direction: column;
+    width: 70px;
+    padding: 10px;
+  }
+  .itensN {
+    transition: 0.7s;
+    width: 120px;
+    padding: 25px;
+  }
+}
