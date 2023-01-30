@@ -1,0 +1,16 @@
+:root {
+  --light: #fdca95;
+  --lightMed: #e3a886;
+  --Medium: #fab29f;
+  --MedDark: #e38c86;
+  --Dark: #fd95b0;
+}
+
+body, html {
+  overflow-x: hidden;
+  background-color: #ffe9d2;
+
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
