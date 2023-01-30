@@ -1,13 +1,13 @@
 :root {
-  --light: #fcfffe;
-  --lightMed: #e3e6e4;
-  --Medium: #bdbfbe;
-  --MedDark: #7e807f;
-  --Dark: #3f403f;
+  --light: #fdca95;
+  --lightMed: #e3a886;
+  --Medium: #fab29f;
+  --MedDark: #e38c86;
+  --Dark: #fd95b0;
 }
 
 .categories {
-  width: 100vw;
+  width: 103%;
   height: 10vh;
   background-color: var(--Medium);
   color: black;
@@ -33,7 +33,6 @@
 
 .categoriesItem:hover {
   background-color: var(--MedDark);
-  padding: 5px;
   border-radius: 5px;
   color: var(--light);
 }
@@ -45,4 +44,48 @@
 
 .display {
   display: none;
+}
+
+@media screen and (max-width: 430px) {
+  .categories {
+    height: 7vh;
+    font-size: 12pt;
+    width: 100%;
+  }
+
+  .categories:hover {
+    background-color: var(--MedDark);
+    border-radius: 5px;
+    color: var(--light);
+  }
+
+  .categoriesItem {
+    cursor: pointer;
+
+    margin: 0px 20px 0px 20px;
+    transition: 0.7s;
+    text-align: center;
+  }
+
+  #taskHour {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  #taskName {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .tittleH1 {
+    transition: 0.7s;
+    font-size: 15pt;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  #taskHour {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }

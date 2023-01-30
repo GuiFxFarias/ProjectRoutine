@@ -7,7 +7,7 @@ function Home() {
     <>
       <FDate />
       <div className="main">
-        <h1>
+        <h1 className="tittleH1">
           Organize ou crie a<strong>SUA</strong> rotina
         </h1>
         <div className="text">

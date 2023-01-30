@@ -6,7 +6,6 @@ import React, { useState } from "react";
 import MobileMenu from "./MobileMenu";
 
 function Navbar() {
-
   return (
     <>
       <nav className="navbar">

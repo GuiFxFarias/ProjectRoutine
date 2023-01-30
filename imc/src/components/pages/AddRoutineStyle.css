@@ -1,9 +1,9 @@
 :root {
-  --light: #fcfffe;
-  --lightMed: #e3e6e4;
-  --Medium: #bdbfbe;
-  --MedDark: #7e807f;
-  --Dark: #3f403f;
+  --light: #FDCA95;
+  --lightMed: #E3A886;
+  --Medium: #FAB29F;
+  --MedDark: #E38C86;
+  --Dark: #FD95B0;
   --Red: #ff4e4e;
 }
 
@@ -21,16 +21,17 @@
   margin-top: 10px;
   padding: 10px;
   border: none;
-  background-color: var(--Red);
-  color: var(--light);
+  background-color:var(--MedDark);
+  color: black;
   font-size: 12pt;
 
+  border-radius: 5px;
   cursor: pointer;
   transition: 0.7s;
 }
 
 .addTask:hover {
-  background-color: var(--Dark);
+  background-color: var(--light);
   box-shadow: 0px 0px 10px var(--Red);
 }
 
@@ -52,4 +53,13 @@ input {
 .divTodo {
   display: flex;
   align-items: center;
+}
+
+
+@media screen and (max-width: 430px) {
+
+  .listInputs{
+    height: 55vh;
+  }
+
 }
