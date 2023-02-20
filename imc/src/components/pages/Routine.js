@@ -107,7 +107,7 @@ function Routine() {
 
       const year = date.getFullYear();
       const monthDate = date.toLocaleString("default", { month: "long" });
-      const day = date.getDate();
+      const day = date.toLocaleString("default", { weekday: "long" });
 
       const hour = date.getHours(OnehourTask);
       const minute = date.getMinutes();
@@ -132,11 +132,13 @@ function Routine() {
       });
 
       const newDate1 = new Date(
-        `${monthDate} ${day}, ${year} ${OnehourTask}:${OneminuteTask}:${second}:${miliSecond}`
+        `${day} ${monthDate}, ${year} ${OnehourTask}:${OneminuteTask}:${second}`
       );
       const newDate2 = new Date(
-        `${monthDate} ${day}, ${year} ${TwohourTask}:${TwominuteTask}:${second}:${miliSecond}`
+        `${day} ${monthDate}, ${year} ${TwohourTask}:${TwominuteTask}:${second}`
       );
+
+      console.log(newDate1, newDate2);
 
       if (newDate1 < newDate2) {
         const ms = newDate2 - newDate1;
@@ -182,6 +184,7 @@ function Routine() {
     return (
       <>
         <h1></h1>
+        <button onClick={handleCalc}>clique</button>
         <h2 className="tittleCalc">Calcule o tempo em cada tarefa</h2>
         <div className="instructions">
           Se voce quiser saber quanto tempo tem de uma tarefa para outra, insira
