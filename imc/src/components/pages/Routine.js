@@ -184,7 +184,6 @@ function Routine() {
     return (
       <>
         <h1></h1>
-        <button onClick={handleCalc}>clique</button>
         <h2 className="tittleCalc">Calcule o tempo em cada tarefa</h2>
         <div className="instructions">
           Se voce quiser saber quanto tempo tem de uma tarefa para outra, insira
